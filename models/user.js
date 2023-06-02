@@ -27,4 +27,4 @@ var UserSchema = new mongoose.Schema({
 });
 
 UserSchema.plugin(Localstrategy);
-module.exports =mongoose.model("User",UserSchema);
+module.exports =mongoose.model("Code-companion",UserSchema);
