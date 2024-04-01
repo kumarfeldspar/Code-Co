@@ -393,12 +393,12 @@ app.post("/material/addMaterial", isModerator, function (req, res) {
 
 function isModerator(req, res, next) {
   if (req.isAuthenticated()) {
-    return next();
-    // if (req.user.role === 'moderator') {
-    //     return next();
-    // }
-    // req.flash("error", "You need to be logged in as moderator to do that");
-    // res.redirect("/materials");
+    // return next();
+    if (req.user.role === "moderator") {
+      return next();
+    }
+    req.flash("error", "You need to be logged in as moderator to do that");
+    res.redirect("/materials");
   } else {
     req.session.returnTo = req.originalUrl;
     req.flash("error", "You need to be logged in to do that");
